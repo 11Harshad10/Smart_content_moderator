@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Comment Analyzer</title>
+</head>
+<body>
+    <h1>YouTube Comment Toxicity Analyzer</h1>
+    <form action="/analyze" method="POST">
+        <label for="video_id">Enter YouTube Video ID:</label>
+        <input type="text" id="video_id" name="video_id" required>
+        <button type="submit">Check Comments</button>
+    </form>
+
+    {% if results %}
+        <h2>Results:</h2>
+        <ul>
+            {% for result in results %}
+                <li>{{ result.comment }} → <strong>{{ result.toxic }}</strong></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
+
